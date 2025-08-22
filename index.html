@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schauna Bandekar | Art Director & Set Dresser</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-900 text-gray-100">
+  <header class="p-6 text-center text-3xl font-bold">Schauna Bandekar – Portfolio</header>
+
+  <main class="container mx-auto p-6">
+    <section id="hero" class="text-center py-20" style="background:url('assets/hero-bg.jpg') center/cover;">
+      <h1 class="text-5xl font-bold mb-4">Art Director | Set Dresser</h1>
+      <p class="text-xl text-amber-400">Creative Visualizer based in Mumbai</p>
+    </section>
+
+    <section id="portfolio" class="py-20">
+      <h2 class="text-4xl mb-8 text-center">Portfolio Highlights</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <img src="assets/project1.jpg" alt="Project 1" class="rounded-xl shadow">
+        <img src="assets/project2.jpg" alt="Project 2" class="rounded-xl shadow">
+        <img src="assets/project3.jpg" alt="Project 3" class="rounded-xl shadow">
+        <img src="assets/project4.jpg" alt="Project 4" class="rounded-xl shadow">
+      </div>
+    </section>
+
+    <section id="creative-corner" class="py-20">
+      <h2 class="text-4xl mb-8 text-center">✨ Creative Corner</h2>
+      <textarea id="concept-prompt" class="w-full p-4 bg-gray-800 rounded" placeholder="Describe your idea..."></textarea>
+      <button id="generate-concept-btn" class="bg-amber-500 text-black font-bold py-2 px-4 rounded mt-4">Generate Concept</button>
+      <div id="concept-output" class="mt-6 p-4 bg-gray-800 rounded min-h-[100px]"></div>
+    </section>
+
+    <section id="contact" class="py-20">
+      <h2 class="text-4xl mb-8 text-center">📩 Contact Me</h2>
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="max-w-xl mx-auto space-y-4">
+        <input type="text" name="name" placeholder="Your Name" required class="w-full p-3 rounded bg-gray-800 border border-gray-700">
+        <input type="email" name="_replyto" placeholder="Your Email" required class="w-full p-3 rounded bg-gray-800 border border-gray-700">
+        <textarea name="message" rows="5" placeholder="Your Message" required class="w-full p-3 rounded bg-gray-800 border border-gray-700"></textarea>
+        <button type="submit" class="bg-amber-500 text-black font-bold py-2 px-4 rounded w-full">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="text-center p-6 bg-gray-800">© <span id="year"></span> Schauna Bandekar</footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=YOUR_API_KEY_HERE`;
+
+    async function callGeminiAPI(prompt) {
+      const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
+      try {
+        const response = await fetch(API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        const result = await response.json();
+        return result.candidates?.[0]?.content?.parts?.[0]?.text || "No response.";
+      } catch (e) {
+        return "Error: " + e.message;
+      }
+    }
+
+    document.getElementById("generate-concept-btn").addEventListener("click", async () => {
+      const input = document.getElementById("concept-prompt").value;
+      if (!input) return;
+      document.getElementById("concept-output").textContent = "Thinking...";
+      const fullPrompt = `You are an art director. Expand this idea into mood, color palette, set pieces, lighting: "${input}"`;
+      const output = await callGeminiAPI(fullPrompt);
+      document.getElementById("concept-output").textContent = output;
+    });
+  </script>
+</body>
+</html>
