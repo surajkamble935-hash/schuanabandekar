@@ -1,78 +1,419 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Schauna Bandekar | Art Director & Set Dresser</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css">
-</head>
-<body class="bg-gray-900 text-gray-100">
-  <header class="p-6 text-center text-3xl font-bold">Schauna Bandekar – Portfolio</header>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schauna Bandekar | Art Director & Set Dresser</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Portfolio of Schauna Bandekar, an Art Director & Set Dresser specializing in films, ads, music videos, and web series. Based in Mumbai, India.">
+    <meta name="keywords" content="Art Director Mumbai, Set Dresser, Production Designer, Visual Storytelling, Schauna Bandekar">
+    <meta name="author" content="Schauna Bandekar">
 
-  <main class="container mx-auto p-6">
-    <section id="hero" class="text-center py-20" style="background:url('assets/hero-bg.jpg') center/cover;">
-      <h1 class="text-5xl font-bold mb-4">Art Director | Set Dresser</h1>
-      <p class="text-xl text-amber-400">Creative Visualizer based in Mumbai</p>
-    </section>
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Schauna Bandekar | Art Director & Set Dresser">
+    <meta property="og:description" content="Creative portfolio showcasing films, ads, and music video projects by Schauna Bandekar.">
+    <meta property="og:image" content="https://placehold.co/1200x630/111827/f59e0b?text=Schauna+Bandekar+Portfolio">
+    <meta property="og:url" content="https://schaunabandekar.com"> <!-- Replace with your actual domain -->
+    <meta name="twitter:card" content="summary_large_image">
 
-    <section id="portfolio" class="py-20">
-      <h2 class="text-4xl mb-8 text-center">Portfolio Highlights</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <img src="assets/project1.jpg" alt="Project 1" class="rounded-xl shadow">
-        <img src="assets/project2.jpg" alt="Project 2" class="rounded-xl shadow">
-        <img src="assets/project3.jpg" alt="Project 3" class="rounded-xl shadow">
-        <img src="assets/project4.jpg" alt="Project 4" class="rounded-xl shadow">
-      </div>
-    </section>
-
-    <section id="creative-corner" class="py-20">
-      <h2 class="text-4xl mb-8 text-center">✨ Creative Corner</h2>
-      <textarea id="concept-prompt" class="w-full p-4 bg-gray-800 rounded" placeholder="Describe your idea..."></textarea>
-      <button id="generate-concept-btn" class="bg-amber-500 text-black font-bold py-2 px-4 rounded mt-4">Generate Concept</button>
-      <div id="concept-output" class="mt-6 p-4 bg-gray-800 rounded min-h-[100px]"></div>
-    </section>
-
-    <section id="contact" class="py-20">
-      <h2 class="text-4xl mb-8 text-center">📩 Contact Me</h2>
-      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="max-w-xl mx-auto space-y-4">
-        <input type="text" name="name" placeholder="Your Name" required class="w-full p-3 rounded bg-gray-800 border border-gray-700">
-        <input type="email" name="_replyto" placeholder="Your Email" required class="w-full p-3 rounded bg-gray-800 border border-gray-700">
-        <textarea name="message" rows="5" placeholder="Your Message" required class="w-full p-3 rounded bg-gray-800 border border-gray-700"></textarea>
-        <button type="submit" class="bg-amber-500 text-black font-bold py-2 px-4 rounded w-full">Send</button>
-      </form>
-    </section>
-  </main>
-
-  <footer class="text-center p-6 bg-gray-800">© <span id="year"></span> Schauna Bandekar</footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=YOUR_API_KEY_HERE`;
-
-    async function callGeminiAPI(prompt) {
-      const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
-      try {
-        const response = await fetch(API_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
-        const result = await response.json();
-        return result.candidates?.[0]?.content?.parts?.[0]?.text || "No response.";
-      } catch (e) {
-        return "Error: " + e.message;
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Person",
+      "name": "Schauna Bandekar",
+      "jobTitle": "Art Director & Set Dresser",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Freelance"
+      },
+      "url": "https://schaunabandekar.com",
+      "sameAs": [
+        "https://www.instagram.com/",
+        "https://www.linkedin.com/in/"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Mumbai",
+        "addressCountry": "India"
       }
     }
+    </script>
 
-    document.getElementById("generate-concept-btn").addEventListener("click", async () => {
-      const input = document.getElementById("concept-prompt").value;
-      if (!input) return;
-      document.getElementById("concept-output").textContent = "Thinking...";
-      const fullPrompt = `You are an art director. Expand this idea into mood, color palette, set pieces, lighting: "${input}"`;
-      const output = await callGeminiAPI(fullPrompt);
-      document.getElementById("concept-output").textContent = output;
-    });
-  </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* Dark Blue-Gray */
+            color: #E5E7EB; /* Light Gray */
+        }
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        .glass-effect {
+            background: rgba(31, 41, 55, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .btn-primary {
+            @apply inline-block bg-amber-500 text-gray-900 font-semibold py-2 px-5 rounded-lg shadow-md transition-all duration-300 ease-in-out;
+        }
+        .btn-primary:hover {
+            @apply bg-amber-400 scale-105 transform;
+        }
+        .btn-primary:disabled {
+            @apply bg-gray-500 cursor-not-allowed;
+        }
+        .section-title {
+            @apply font-playfair text-4xl md:text-5xl font-bold text-white mb-12 text-center;
+        }
+        .portfolio-card {
+            @apply glass-effect rounded-2xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-amber-500/20;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #f59e0b;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes fadeIn {
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+          opacity: 0;
+          transform: translateY(20px);
+          animation: fadeIn 1.5s forwards;
+        }
+        .filter-btn.active {
+            @apply bg-amber-600 ring-2 ring-amber-400;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="glass-effect sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-playfair text-2xl font-bold text-white">Schauna Bandekar</a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#about" class="text-gray-300 hover:text-amber-400 transition">About</a>
+                <a href="#portfolio" class="text-gray-300 hover:text-amber-400 transition">Portfolio</a>
+                <a href="#skills" class="text-gray-300 hover:text-amber-400 transition">Skills</a>
+                <a href="#creative-corner" class="text-gray-300 hover:text-amber-400 transition">Creative Corner</a>
+                <a href="#contact" class="btn-primary text-sm">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#about" class="block py-2 px-4 text-sm text-gray-300 hover:bg-gray-700">About</a>
+            <a href="#portfolio" class="block py-2 px-4 text-sm text-gray-300 hover:bg-gray-700">Portfolio</a>
+            <a href="#skills" class="block py-2 px-4 text-sm text-gray-300 hover:bg-gray-700">Skills</a>
+            <a href="#creative-corner" class="block py-2 px-4 text-sm text-gray-300 hover:bg-gray-700">Creative Corner</a>
+            <a href="#contact" class="block py-2 px-4 text-sm text-gray-300 hover:bg-gray-700">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center bg-cover bg-center" style="background-image: linear-gradient(rgba(17, 24, 39, 0.8), rgba(17, 24, 39, 0.9)), url('https://placehold.co/1920x1080/1a202c/ffffff?text=Visual+Ambiance');">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="font-playfair text-5xl md:text-7xl font-bold text-white leading-tight mb-4 animate-fadeIn">Schauna Bandekar</h1>
+                <p class="text-xl md:text-2xl text-amber-400 font-light mb-8 animate-fadeIn" style="animation-delay: 0.5s;">Art Director | Set Dresser | Creative Visualizer</p>
+                <div class="flex justify-center space-x-6 animate-fadeIn" style="animation-delay: 1s;">
+                    <a href="#portfolio" class="btn-primary">View My Work</a>
+                    <a href="https://www.instagram.com/" target="_blank" class="text-gray-300 hover:text-amber-400 transition-transform duration-300 hover:scale-110">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.08 2.525c.636-.247 1.363-.416 2.427-.465C9.53 2.013 9.884 2 12.315 2zM12 8.118a4.102 4.102 0 100 8.204 4.102 4.102 0 000-8.204zM12 14.894A2.894 2.894 0 1112 9.106a2.894 2.894 0 010 5.788z" clip-rule="evenodd" /></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About / Cover Letter -->
+        <section id="about" class="py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                 <div id="cover-letter-base" data-aos="fade-up" class="max-w-4xl mx-auto glass-effect p-8 md:p-12 rounded-2xl">
+                    <h2 class="section-title">Visual Storyteller</h2>
+                    <p class="text-lg text-gray-300 leading-relaxed mb-6">
+                        As a visual storyteller with a deep-rooted passion for design, color theory, and visual narrative, I’ve spent the last few years immersing myself in the art of creating captivating and emotionally resonant sets for screen. My name is Schauna Bandekar, and I’m an Art Director and Set Designer whose journey has spanned across films, advertisements, web series, and music videos — each project strengthening my commitment to blending storytelling with striking aesthetics.
+                    </p>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Working in various roles — from Assistant Art Director to Set Dresser to independently leading art direction — I’ve built a strong foundation in managing large-scale productions, understanding the visual language of brands, and collaborating across departments to bring concepts to life. Whether it’s the corporate finesse needed for Bank of Baroda and Tata, the emotional vibrance in Swami Samarth music videos, or the modern edge for Flipkart Mini Ads, I bring adaptability and visual intent to every frame.
+                    </p>
+                 </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-20 md:py-32 bg-gray-900/50">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title" data-aos="fade-up">Portfolio Highlights</h2>
+                
+                <!-- Filter Buttons -->
+                <div class="flex justify-center flex-wrap gap-4 mb-12" data-aos="fade-up">
+                  <button class="filter-btn btn-primary active" data-filter="all">All</button>
+                  <button class="filter-btn btn-primary" data-filter="commercial">Commercials</button>
+                  <button class="filter-btn btn-primary" data-filter="film">Films</button>
+                  <button class="filter-btn btn-primary" data-filter="music">Music Videos</button>
+                  <button class="filter-btn btn-primary" data-filter="web">Web Series</button>
+                </div>
+
+                <!-- Portfolio Grid -->
+                <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <div class="portfolio-card" data-category="commercial" data-aos="fade-up">
+                        <img src="https://placehold.co/600x400/1f2937/f59e0b?text=Bank+of+Baroda" alt="Bank of Baroda project" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <p class="text-sm text-amber-400 mb-1">Commercial</p>
+                            <h3 class="font-playfair text-2xl font-semibold text-white mb-2">Bank of Baroda</h3>
+                            <p class="text-gray-400 mb-4">Role: Set Dresser</p>
+                            <a href="#" class="btn-primary" target="_blank">Watch on Instagram</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-card" data-category="film" data-aos="fade-up">
+                        <img src="https://placehold.co/600x400/1f2937/f59e0b?text=Nails" alt="Nails Short Film project" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <p class="text-sm text-amber-400 mb-1">Short Film</p>
+                            <h3 class="font-playfair text-2xl font-semibold text-white mb-2">"Nails"</h3>
+                            <p class="text-gray-400 mb-2">Role: Assistant Art Director</p>
+                            <div class="text-xs text-gray-300 bg-gray-700 inline-block px-2 py-1 rounded-full mb-4">🏆 Red Sea & Bangalore Int'l Film Festival</div>
+                            <a href="#" class="btn-primary" target="_blank">Watch Trailer</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-card" data-category="music" data-aos="fade-up">
+                        <img src="https://placehold.co/600x400/1f2937/f59e0b?text=Swami+Samarth" alt="Swami Samarth Music Video project" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <p class="text-sm text-amber-400 mb-1">Music Video</p>
+                            <h3 class="font-playfair text-2xl font-semibold text-white mb-2">"Swami Samarth"</h3>
+                            <p class="text-gray-400 mb-4">Role: Art Director</p>
+                            <a href="#" class="btn-primary" target="_blank">Watch on Instagram</a>
+                        </div>
+                    </div>
+                     <div class="portfolio-card" data-category="web" data-aos="fade-up">
+                        <img src="https://placehold.co/600x400/1f2937/f59e0b?text=Hustler" alt="Hustler Web Series project" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <p class="text-sm text-amber-400 mb-1">Web Series</p>
+                            <h3 class="font-playfair text-2xl font-semibold text-white mb-2">"Hustler"</h3>
+                            <p class="text-gray-400 mb-4">Role: Assistant Art Director</p>
+                            <a href="#" class="btn-primary" target="_blank">Watch on YouTube</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Gemini Creative Corner -->
+        <section id="creative-corner" class="py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title" data-aos="fade-up">✨ Creative Corner</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                    <div class="glass-effect p-8 rounded-2xl" data-aos="fade-right">
+                        <h3 class="font-playfair text-3xl text-amber-400 mb-4">Art Concept Generator</h3>
+                        <p class="text-gray-300 mb-6">Enter a brief idea and let AI brainstorm a visual concept, including mood, color palette, and set ideas.</p>
+                        <textarea id="concept-prompt" rows="3" class="w-full bg-gray-800 text-white p-3 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="e.g., A moody detective's office for a noir film..."></textarea>
+                        <button id="generate-concept-btn" class="btn-primary mt-4 w-full flex items-center justify-center">
+                            <span class="btn-text">Generate Concept</span>
+                            <div class="loader hidden ml-3"></div>
+                        </button>
+                        <div id="concept-output" class="mt-6 p-4 bg-gray-900/50 rounded-lg min-h-[100px] whitespace-pre-wrap"></div>
+                    </div>
+                    <div class="glass-effect p-8 rounded-2xl" data-aos="fade-left">
+                        <h3 class="font-playfair text-3xl text-amber-400 mb-4">Cover Letter Assistant</h3>
+                        <p class="text-gray-300 mb-6">Paste a job description, and the AI will help tailor my cover letter to highlight the most relevant experience.</p>
+                        <textarea id="job-desc" rows="8" class="w-full bg-gray-800 text-white p-3 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="Paste the job description here..."></textarea>
+                        <button id="generate-letter-btn" class="btn-primary mt-4 w-full flex items-center justify-center">
+                            <span class="btn-text">✨ Tailor My Cover Letter</span>
+                            <div class="loader hidden ml-3"></div>
+                        </button>
+                        <div id="letter-output" class="mt-6 p-4 bg-gray-900/50 rounded-lg min-h-[100px] whitespace-pre-wrap"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills & Education Section -->
+        <section id="skills" class="py-20 md:py-32 bg-gray-900/50">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                    <div data-aos="fade-right">
+                        <h2 class="section-title text-left">Skills & Tools</h2>
+                        <div class="space-y-8">
+                            <div>
+                                <h3 class="font-playfair text-2xl text-amber-400 mb-3">Art Direction</h3>
+                                <p class="text-gray-300">Pre-visualization, Concept Design, Moodboards</p>
+                            </div>
+                            <div>
+                                <h3 class="font-playfair text-2xl text-amber-400 mb-3">Software Proficiency</h3>
+                                <div class="flex flex-wrap gap-3 mt-4">
+                                    <span class="bg-gray-700 text-gray-200 text-sm font-medium px-4 py-2 rounded-full">Adobe Photoshop</span>
+                                    <span class="bg-gray-700 text-gray-200 text-sm font-medium px-4 py-2 rounded-full">SketchUp</span>
+                                    <span class="bg-gray-700 text-gray-200 text-sm font-medium px-4 py-2 rounded-full">AutoCAD</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-aos="fade-left">
+                        <h2 class="section-title text-left">Education</h2>
+                        <div class="border-l-2 border-amber-500 pl-8 space-y-10">
+                            <div class="relative">
+                                <div class="absolute -left-[42px] top-1 h-4 w-4 rounded-full bg-amber-500"></div>
+                                <h3 class="font-playfair text-2xl text-white">B.A. in Visual Communication</h3>
+                                <p class="text-amber-400 mb-1">XYZ University – Mumbai</p>
+                            </div>
+                            <div class="relative">
+                                 <div class="absolute -left-[42px] top-1 h-4 w-4 rounded-full bg-amber-500"></div>
+                                <h3 class="font-playfair text-2xl text-white">Certified in Production Design</h3>
+                                <p class="text-amber-400 mb-1">FTII Workshop – Pune</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="bg-gray-800/50 py-12">
+        <div class="container mx-auto px-6 text-center text-gray-400">
+            <h2 class="font-playfair text-3xl text-white mb-4" data-aos="fade-up">Let's Create Together</h2>
+            <p class="mb-6" data-aos="fade-up">Open to new projects and collaborations.</p>
+            
+            <!-- Contact Form -->
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="max-w-xl mx-auto mt-8 space-y-4" data-aos="fade-up">
+              <input type="text" name="name" placeholder="Your Name" required class="w-full p-3 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-500">
+              <input type="email" name="_replyto" placeholder="Your Email" required class="w-full p-3 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-500">
+              <textarea name="message" rows="5" placeholder="Tell me about your project..." required class="w-full p-3 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-500"></textarea>
+              <button type="submit" class="btn-primary w-full">Send Message</button>
+            </form>
+
+            <div class="flex justify-center items-center space-x-6 text-lg my-8" data-aos="fade-up">
+                <a href="mailto:schaunabandekar@email.com" class="hover:text-amber-400 transition">schaunabandekar@email.com</a>
+                <span>&bull;</span>
+                <p>+91 99305 01938</p>
+            </div>
+            <p class="text-sm">&copy; <span id="year"></span> Schauna Bandekar. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // --- Initialize AOS ---
+        AOS.init({ duration: 800, once: true, offset: 50 });
+
+        // --- UI Elements ---
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const generateConceptBtn = document.getElementById('generate-concept-btn');
+        const conceptPromptInput = document.getElementById('concept-prompt');
+        const conceptOutputDiv = document.getElementById('concept-output');
+        const generateLetterBtn = document.getElementById('generate-letter-btn');
+        const jobDescInput = document.getElementById('job-desc');
+        const letterOutputDiv = document.getElementById('letter-output');
+        const baseCoverLetter = document.getElementById('cover-letter-base').innerText;
+
+        // --- Event Listeners ---
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        generateConceptBtn.addEventListener('click', handleConceptGeneration);
+        generateLetterBtn.addEventListener('click', handleLetterGeneration);
+
+        // --- Portfolio Filtering ---
+        document.querySelectorAll(".filter-btn").forEach(btn => {
+          btn.addEventListener("click", (e) => {
+            // Deactivate other buttons
+            document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove('active'));
+            // Activate clicked button
+            e.currentTarget.classList.add('active');
+
+            const category = e.currentTarget.dataset.filter;
+            document.querySelectorAll("#portfolio-grid .portfolio-card").forEach(card => {
+              card.style.display = 'none'; // Hide all cards initially
+              if (category === "all" || card.dataset.category === category) {
+                 setTimeout(() => { card.style.display = "block"; }, 10); // Re-display with a tiny delay for transition
+              }
+            });
+          });
+        });
+
+        // --- Gemini API Call Logic ---
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=`;
+
+        async function callGeminiAPI(prompt) {
+            const payload = {
+                contents: [{ role: "user", parts: [{ text: prompt }] }]
+            };
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (!response.ok) throw new Error(`API Error: ${response.statusText}`);
+                const result = await response.json();
+                return result.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I couldn't generate a response.";
+            } catch (error) {
+                console.error("Error calling Gemini API:", error);
+                return `An error occurred: ${error.message}.`;
+            }
+        }
+
+        // --- Feature Handlers ---
+        async function handleConceptGeneration() {
+            const userPrompt = conceptPromptInput.value;
+            if (!userPrompt.trim()) {
+                conceptOutputDiv.textContent = "Please enter a concept idea first.";
+                return;
+            }
+            toggleLoading(generateConceptBtn, true);
+            conceptOutputDiv.textContent = 'Brainstorming...';
+            const fullPrompt = `You are an expert Art Director. A client has an idea: "${userPrompt}". Expand on it by creating a detailed art direction concept including: Mood & Vibe, Color Palette, Key Set Pieces/Props, and Lighting Style. Format with clear headings.`;
+            conceptOutputDiv.textContent = await callGeminiAPI(fullPrompt);
+            toggleLoading(generateConceptBtn, false);
+        }
+
+        async function handleLetterGeneration() {
+            const jobDesc = jobDescInput.value;
+            if (!jobDesc.trim()) {
+                letterOutputDiv.textContent = "Please paste a job description first.";
+                return;
+            }
+            toggleLoading(generateLetterBtn, true);
+            letterOutputDiv.textContent = 'Tailoring the letter...';
+            const fullPrompt = `You are a career assistant for Art Director Schauna Bandekar. Her base cover letter is:\n---\n${baseCoverLetter}\n---\nHer portfolio includes commercials, films (like "Nails"), music videos, and web series. The job description is:\n---\n${jobDesc}\n---\nRewrite the second paragraph of her letter to mention 1-2 of her most relevant projects, explaining why they fit this job. Maintain her professional tone. Output only the rewritten paragraph.`;
+            letterOutputDiv.textContent = await callGeminiAPI(fullPrompt);
+            toggleLoading(generateLetterBtn, false);
+        }
+
+        // --- Helper Functions ---
+        function toggleLoading(button, isLoading) {
+            const btnText = button.querySelector('.btn-text');
+            const loader = button.querySelector('.loader');
+            button.disabled = isLoading;
+            btnText.style.opacity = isLoading ? '0.5' : '1';
+            loader.classList.toggle('hidden', !isLoading);
+        }
+    </script>
 </body>
 </html>
+
+
